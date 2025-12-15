@@ -65,22 +65,13 @@ export default async function Home() {
             ดูเวลาละหมาดแม่นยำทุกจังหวัด พร้อมเครื่องมือคำนวณอิสลาม
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link 
-              href="/prayertime/bangkok" 
-              className="px-6 py-3 rounded-full bg-yellow-400 text-slate-900 hover:bg-yellow-300 font-semibold shadow-lg flex items-center justify-center gap-2"
-            >
-              <Clock className="w-4 h-4" />
-              เวลาละหมาดกรุงเทพฯ
-            </Link>
-            <Link 
-              href="/prayertime" 
-              className="px-6 py-3 rounded-full border border-white/40 text-white hover:bg-white/10 font-medium flex items-center justify-center gap-2"
-            >
-              <MapPin className="w-4 h-4" />
-              ดูทุกจังหวัด
-            </Link>
-          </div>
+          <Link 
+            href="/prayertime" 
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-yellow-400 text-slate-900 hover:bg-yellow-300 font-semibold shadow-lg"
+          >
+            <MapPin className="w-5 h-5" />
+            ดูเวลาละหมาดทุกจังหวัด
+          </Link>
         </div>
       </section>
 
