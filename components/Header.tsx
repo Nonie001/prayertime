@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
-import { Building2, Menu, X, ChevronDown, Calculator } from 'lucide-react';
+import { Menu, X, ChevronDown, Calculator } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,13 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Building2 className="w-5 h-5 text-yellow-400" />
+            <Image 
+              src="/logo.svg" 
+              alt="เวลาละหมาดไทย" 
+              width={32} 
+              height={32}
+              className="w-8 h-8"
+            />
             <span className="text-lg font-bold text-white">
               เวลาละหมาดไทย
             </span>

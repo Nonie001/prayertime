@@ -17,6 +17,13 @@ export const metadata: Metadata = {
     template: "%s | เวลาละหมาดไทย",
   },
   description: "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย พร้อมเครื่องมือคำนวณซะกาตและมรดกตามหลักอิสลาม อัพเดททุกวัน",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/logo.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/logo.svg',
+  },
   keywords: [
     "เวลาละหมาด",
     "เวลาละหมาดวันนี้",
