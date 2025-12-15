@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import provinces from '@/data/provinces.json';
 import { getPrayerTimes, PRAYER_NAMES } from '@/lib/utils/prayerTimes';
 import { Calculator, Scroll, Clock, MapPin, ArrowRight, Star, Sun, Sunset, Moon, CloudSun, SunDim } from 'lucide-react';
@@ -52,7 +53,14 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center">
         <div className="absolute inset-0">
-          <img src="/hero.png" alt="มัสยิด" className="w-full h-full object-cover object-bottom" />
+          <Image 
+            src="/hero-optimized.webp" 
+            alt="มัสยิด" 
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-bottom" 
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 to-slate-900/80"></div>
         </div>
 
