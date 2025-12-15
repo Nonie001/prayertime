@@ -1,0 +1,26 @@
+{
+  "name": "เวลาละหมาดไทย",
+  "short_name": "ละหมาดไทย",
+  "description": "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e293b",
+  "theme_color": "#1e293b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["lifestyle", "utilities"],
+  "lang": "th"
+}
