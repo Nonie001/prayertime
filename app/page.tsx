@@ -88,23 +88,16 @@ export default async function Home() {
       {/* Prayer Times Card - ตรวจจับตำแหน่งอัตโนมัติ */}
       <LocationPrayerCard fallbackData={bangkokPrayerData} />
 
-      {/* Qibla Quick Access */}
-      <div className="relative z-20 px-3 sm:px-4 mt-4">
+      {/* Qibla Quick Access - ติดกับการ์ดเวลาละหมาด */}
+      <div className="relative z-20 px-3 sm:px-4 mt-3">
         <div className="max-w-3xl mx-auto">
           <Link
             href="/qibla"
-            className="flex items-center justify-between bg-emerald-600 hover:bg-emerald-500 rounded-xl p-4 shadow-lg transition-all"
+            className="flex items-center justify-center gap-2 bg-slate-800/90 hover:bg-slate-700 rounded-lg py-2.5 px-4 transition-all border border-slate-700"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
-                <Compass className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <h3 className="text-white font-semibold">ทิศกิบละห์</h3>
-                <p className="text-emerald-100 text-xs">หาทิศทางสู่กะอ์บะห์</p>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-white" />
+            <Compass className="w-4 h-4 text-emerald-400" />
+            <span className="text-white text-sm font-medium">หาทิศกิบละห์</span>
+            <ArrowRight className="w-4 h-4 text-slate-400" />
           </Link>
         </div>
       </div>
@@ -143,24 +136,10 @@ export default async function Home() {
         {/* Islamic Tools */}
         <section>
           <h2 className="text-2xl md:text-3xl font-bold text-slate-800 text-center mb-6 md:mb-8">
-            เครื่องมือ
+            เครื่องมือคำนวณ
           </h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            <Link
-              href="/qibla"
-              className="group bg-emerald-700 rounded-xl p-5 md:p-6 hover:bg-emerald-600 transition-all"
-            >
-              <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
-                <Compass className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-1">ทิศกิบละห์</h3>
-              <p className="text-emerald-100 text-sm mb-3">หาทิศทางสู่กะอ์บะห์</p>
-              <span className="text-white text-sm flex items-center gap-1">
-                เปิดใช้งาน <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             <Link
               href="/calculator/zakat"
               className="group bg-slate-800 rounded-xl p-5 md:p-6 hover:bg-slate-700 transition-all"
@@ -169,7 +148,7 @@ export default async function Home() {
                 <Calculator className="w-6 h-6 text-yellow-400" />
               </div>
               <h3 className="text-lg font-semibold text-white mb-1">คำนวณซะกาต</h3>
-              <p className="text-slate-400 text-sm mb-3">คำนวณซะกาตเงิน ทอง</p>
+              <p className="text-slate-400 text-sm mb-3">คำนวณซะกาตเงิน ทอง และทรัพย์สิน</p>
               <span className="text-yellow-400 text-sm flex items-center gap-1">
                 เริ่มคำนวณ <ArrowRight className="w-4 h-4" />
               </span>
@@ -183,7 +162,7 @@ export default async function Home() {
                 <Scroll className="w-6 h-6 text-yellow-400" />
               </div>
               <h3 className="text-lg font-semibold text-white mb-1">คำนวณมรดก</h3>
-              <p className="text-slate-400 text-sm mb-3">แบ่งมรดกตามฟะรออิฎ</p>
+              <p className="text-slate-400 text-sm mb-3">แบ่งมรดกตามหลักฟะรออิฎ</p>
               <span className="text-yellow-400 text-sm flex items-center gap-1">
                 เริ่มคำนวณ <ArrowRight className="w-4 h-4" />
               </span>

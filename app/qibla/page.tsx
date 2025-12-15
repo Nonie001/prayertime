@@ -2,8 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { ArrowLeft, Compass } from 'lucide-react';
+import { ArrowLeft, Compass, RefreshCw, Info } from 'lucide-react';
 import Footer from '@/components/Footer';
+import { useState } from 'react';
 
 // Dynamic import เพื่อปิด SSR สำหรับ component ที่ใช้ browser APIs
 const QiblaCompass = dynamic(() => import('@/components/QiblaCompass'), {
@@ -17,6 +18,12 @@ const QiblaCompass = dynamic(() => import('@/components/QiblaCompass'), {
 });
 
 export default function QiblaPage() {
+  const [showTip, setShowTip] = useState(true);
+
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
@@ -38,8 +45,45 @@ export default function QiblaPage() {
 
       {/* Content */}
       <div className="max-w-2xl mx-auto px-4 -mt-6">
+        {/* Calibration Tip */}
+        {showTip && (
+          <div className="mb-4 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl p-4 shadow-lg relative overflow-hidden">
+            <button 
+              onClick={() => setShowTip(false)}
+              className="absolute top-2 right-2 text-white/70 hover:text-white text-xl leading-none"
+            >
+              ×
+            </button>
+            <div className="flex items-start gap-3">
+              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">8</span>
+              </div>
+              <div className="flex-1">
+                <h4 className="text-white font-semibold mb-1 flex items-center gap-1.5">
+                  <Info className="w-4 h-4" />
+                  เพิ่มความแม่นยำ
+                </h4>
+                <p className="text-white/90 text-sm">
+                  หมุนโทรศัพท์เป็นรูปเลข <strong>8</strong> ช้าๆ 2-3 รอบ เพื่อปรับเทียบเข็มทิศให้แม่นยำ
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="bg-white rounded-xl shadow-lg p-6">
           <QiblaCompass />
+          
+          {/* Refresh Button */}
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <button
+              onClick={handleRefresh}
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 font-medium transition-colors"
+            >
+              <RefreshCw className="w-4 h-4" />
+              รีเฟรชหน้าเว็บ
+            </button>
+          </div>
         </div>
 
         {/* Notes */}
@@ -57,6 +101,10 @@ export default function QiblaPage() {
             <li className="flex items-start gap-2">
               <span className="text-emerald-500">•</span>
               หลีกเลี่ยงบริเวณที่มีสนามแม่เหล็ก
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-amber-500 font-bold">8</span>
+              <span>หมุนโทรศัพท์เป็นเลข 8 เพื่อปรับเทียบความแม่นยำ</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-emerald-500">•</span>
