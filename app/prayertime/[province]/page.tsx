@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import provinces from '@/data/provinces.json';
 import { getPrayerTimes, PRAYER_NAMES } from '@/lib/utils/prayerTimes';
-import { MapPin, ArrowLeft, Star, Clock } from 'lucide-react';
+import { MapPin, ArrowLeft, Star, Clock, Sun, Sunset, Moon, CloudSun, SunDim, Sunrise } from 'lucide-react';
 
 export const revalidate = 86400;
 
@@ -87,14 +87,27 @@ export default async function ProvincePageDetail({ params }: PageProps) {
         <div className="bg-white rounded-xl shadow-xl overflow-hidden">
           <div className="p-4 md:p-6">
             <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-              {Object.entries(prayerData.times).map(([key, time]) => (
-                <div key={key} className="bg-slate-800 rounded-xl p-3 md:p-4 text-center">
-                  <div className="text-xl md:text-2xl font-bold text-yellow-400">{time}</div>
-                  <div className="text-white text-xs md:text-sm mt-1">
-                    {PRAYER_NAMES[key as keyof typeof PRAYER_NAMES]}
+              {Object.entries(prayerData.times).map(([key, time]) => {
+                const icons: Record<string, React.ReactNode> = {
+                  fajr: <SunDim className="w-6 h-6 text-yellow-400" />,
+                  sunrise: <Sunrise className="w-6 h-6 text-yellow-400" />,
+                  dhuhr: <Sun className="w-6 h-6 text-yellow-400" />,
+                  asr: <CloudSun className="w-6 h-6 text-yellow-400" />,
+                  maghrib: <Sunset className="w-6 h-6 text-yellow-400" />,
+                  isha: <Moon className="w-6 h-6 text-yellow-400" />,
+                };
+                return (
+                  <div key={key} className="bg-slate-800 rounded-xl p-3 md:p-4 text-center">
+                    <div className="flex justify-center mb-2">
+                      {icons[key]}
+                    </div>
+                    <div className="text-xl md:text-2xl font-bold text-yellow-400">{time}</div>
+                    <div className="text-white text-xs md:text-sm mt-1">
+                      {PRAYER_NAMES[key as keyof typeof PRAYER_NAMES]}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

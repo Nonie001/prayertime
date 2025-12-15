@@ -4,16 +4,28 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Calculator, DollarSign, Coins, ArrowLeft, Star } from 'lucide-react';
 
+// Format number with commas
+const formatNumber = (value: string) => {
+  const num = value.replace(/,/g, '');
+  if (!num || isNaN(Number(num))) return '';
+  return Number(num).toLocaleString('th-TH');
+};
+
+// Parse formatted number to raw number
+const parseNumber = (value: string) => {
+  return value.replace(/,/g, '');
+};
+
 export default function ZakatCalculator() {
   const [money, setMoney] = useState('');
   const [gold, setGold] = useState('');
-  const [goldPrice, setGoldPrice] = useState('32000');
+  const [goldPrice, setGoldPrice] = useState('32,000');
   const [result, setResult] = useState<number | null>(null);
 
   const calculateZakat = () => {
-    const moneyValue = parseFloat(money) || 0;
-    const goldValue = parseFloat(gold) || 0;
-    const goldPriceValue = parseFloat(goldPrice) || 32000;
+    const moneyValue = parseFloat(parseNumber(money)) || 0;
+    const goldValue = parseFloat(parseNumber(gold)) || 0;
+    const goldPriceValue = parseFloat(parseNumber(goldPrice)) || 32000;
     
     const moneyNisab = 85 * goldPriceValue;
     const totalWealth = moneyValue + (goldValue * goldPriceValue);
@@ -55,9 +67,10 @@ export default function ZakatCalculator() {
                 เงินสด (บาท)
               </label>
               <input
-                type="number"
+                type="text"
+                inputMode="numeric"
                 value={money}
-                onChange={(e) => setMoney(e.target.value)}
+                onChange={(e) => setMoney(formatNumber(e.target.value))}
                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-slate-800"
                 placeholder="0"
               />
@@ -69,9 +82,10 @@ export default function ZakatCalculator() {
                 ทองคำ (กรัม)
               </label>
               <input
-                type="number"
+                type="text"
+                inputMode="decimal"
                 value={gold}
-                onChange={(e) => setGold(e.target.value)}
+                onChange={(e) => setGold(formatNumber(e.target.value))}
                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-slate-800"
                 placeholder="0"
               />
@@ -83,9 +97,10 @@ export default function ZakatCalculator() {
                 ราคาทองคำต่อกรัม (บาท)
               </label>
               <input
-                type="number"
+                type="text"
+                inputMode="numeric"
                 value={goldPrice}
-                onChange={(e) => setGoldPrice(e.target.value)}
+                onChange={(e) => setGoldPrice(formatNumber(e.target.value))}
                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-slate-800"
               />
             </div>

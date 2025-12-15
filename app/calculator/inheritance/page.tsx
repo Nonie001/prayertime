@@ -4,6 +4,18 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Scroll, Users, ArrowLeft, Star } from 'lucide-react';
 
+// Format number with commas
+const formatNumber = (value: string) => {
+  const num = value.replace(/,/g, '');
+  if (!num || isNaN(Number(num))) return '';
+  return Number(num).toLocaleString('th-TH');
+};
+
+// Parse formatted number to raw number
+const parseNumber = (value: string) => {
+  return value.replace(/,/g, '');
+};
+
 interface Heir {
   id: string;
   name: string;
@@ -22,7 +34,7 @@ export default function InheritanceCalculator() {
   const [result, setResult] = useState<Heir[]>([]);
 
   const calculateInheritance = () => {
-    const estate = parseFloat(totalEstate) || 0;
+    const estate = parseFloat(parseNumber(totalEstate)) || 0;
     if (estate <= 0) return;
 
     const heirs: Heir[] = [];
@@ -105,9 +117,10 @@ export default function InheritanceCalculator() {
                 ทรัพย์สินรวม (บาท)
               </label>
               <input
-                type="number"
+                type="text"
+                inputMode="numeric"
                 value={totalEstate}
-                onChange={(e) => setTotalEstate(e.target.value)}
+                onChange={(e) => setTotalEstate(formatNumber(e.target.value))}
                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-slate-800"
                 placeholder="0"
               />
