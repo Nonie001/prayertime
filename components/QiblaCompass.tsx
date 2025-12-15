@@ -206,19 +206,19 @@ export default function QiblaCompass() {
           <svg className="w-full h-full" viewBox="0 0 200 200">
             {/* Needle */}
             <path
-              d="M100 28 L107 100 L100 112 L93 100 Z"
+              d="M100 32 L107 100 L100 112 L93 100 Z"
               className="fill-emerald-500"
               filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
             />
-            {/* Ka'bah icon at tip */}
-            <rect
-              x="95"
-              y="20"
-              width="10"
-              height="10"
-              rx="1"
-              className="fill-amber-400"
-            />
+            {/* Ka'bah icon at tip - simplified Kaaba shape */}
+            <g transform="translate(100, 18)">
+              {/* Kaaba body */}
+              <rect x="-8" y="0" width="16" height="14" rx="1" className="fill-slate-900" />
+              {/* Gold band (Kiswa border) */}
+              <rect x="-8" y="4" width="16" height="3" className="fill-amber-400" />
+              {/* Door */}
+              <rect x="-2" y="7" width="4" height="7" rx="0.5" className="fill-amber-500" />
+            </g>
             {/* Center dot */}
             <circle cx="100" cy="100" r="6" className="fill-slate-900 stroke-slate-600" strokeWidth="2" />
             <circle cx="100" cy="100" r="3" className="fill-emerald-400" />
