@@ -14,10 +14,10 @@ const jsonLd = {
   '@type': 'WebSite',
   name: 'เวลาละหมาดไทย',
   description: 'เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย',
-  url: 'https://prayertime.example.com',
+  url: 'https://prayertime.in.th',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://prayertime.example.com/prayertime/{province}',
+    target: 'https://prayertime.in.th/prayertime/{province}',
     'query-input': 'required name=province',
   },
 };

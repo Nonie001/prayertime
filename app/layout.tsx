@@ -12,7 +12,7 @@ const prompt = Prompt({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://prayertime.example.com'), // เปลี่ยนเป็น domain จริง
+  metadataBase: new URL('https://prayertime.in.th'),
   title: {
     default: "เวลาละหมาดไทย - ดูเวลาละหมาดแม่นยำทุกจังหวัด",
     template: "%s | เวลาละหมาดไทย",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "th_TH",
-    url: "https://prayertime.example.com",
+    url: "https://prayertime.in.th/",
     siteName: "เวลาละหมาดไทย",
     title: "เวลาละหมาดไทย - ดูเวลาละหมาดแม่นยำทุกจังหวัด",
     description: "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย พร้อมเครื่องมือคำนวณซะกาตและมรดก",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     // google: "your-google-verification-code",
   },
   alternates: {
-    canonical: "https://prayertime.example.com",
+    canonical: "https://prayertime.in.th/",
   },
 };
 
