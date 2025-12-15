@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://prayertime.example.com'; // เปลี่ยนเป็น domain จริง
+  const baseUrl = 'https://prayertime.in.th'; // เปลี่ยนเป็น domain จริง
 
   return {
     rules: [
