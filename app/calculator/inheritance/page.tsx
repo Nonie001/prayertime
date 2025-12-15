@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Scroll, Users, ArrowLeft, Star } from 'lucide-react';
+import { Scroll, Users, ArrowLeft } from 'lucide-react';
 
 // Format number with commas
 const formatNumber = (value: string) => {

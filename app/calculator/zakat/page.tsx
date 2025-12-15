@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Calculator, DollarSign, Coins, ArrowLeft, Star } from 'lucide-react';
+import { Calculator, DollarSign, Coins, ArrowLeft } from 'lucide-react';
 
 // Format number with commas
 const formatNumber = (value: string) => {

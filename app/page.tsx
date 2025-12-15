@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import provinces from '@/data/provinces.json';
 import { getPrayerTimes, PRAYER_NAMES } from '@/lib/utils/prayerTimes';
-import { Calculator, Scroll, Clock, MapPin, ArrowRight, Star, Sun, Sunset, Moon, CloudSun, SunDim } from 'lucide-react';
+import { Calculator, Scroll, MapPin, ArrowRight, Sun, Sunset, Moon, CloudSun, SunDim } from 'lucide-react';
 
 export const revalidate = 86400;
 
