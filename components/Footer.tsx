@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-slate-900 text-white mt-10">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -53,16 +53,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Tools */}
+          {/* Main Links - Same as Header */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 text-yellow-400">เครื่องมือ</h3>
+            <h3 className="font-semibold text-lg mb-4 text-yellow-400">เมนูหลัก</h3>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/prayertime" className="text-slate-400 hover:text-white transition-colors">
+                  เวลาละหมาด
+                </Link>
+              </li>
               <li>
                 <Link href="/qibla" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
                   <Compass className="w-4 h-4" />
                   ทิศกิบละห์
                 </Link>
               </li>
+            </ul>
+            
+            <h4 className="font-medium text-sm mt-4 mb-2 text-slate-300">เครื่องมือ</h4>
+            <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/calculator/zakat" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
                   <Calculator className="w-4 h-4" />
