@@ -40,8 +40,11 @@ export async function getPrayerTimes(lat: number, lng: number, retries = 3): Pro
         await delay(1000 * attempt);
       }
 
+      // method=3: Muslim World League (MWL) - เหมาะกับไทย
+      // school=1: Shafi'i (มาตรฐานในไทย) - Asr เมื่อเงาเท่าตัว
+      // timezonestring: Asia/Bangkok (UTC+7)
       const response = await fetch(
-        `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=${lat}&longitude=${lng}&method=2`,
+        `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=${lat}&longitude=${lng}&method=3&school=1&timezonestring=Asia/Bangkok`,
         { 
           next: { revalidate: 86400 },
           signal: AbortSignal.timeout(10000) // 10 second timeout
