@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Building2, Calculator, Scroll, Clock, Mail } from 'lucide-react';
+import { Building2, Calculator, Scroll, Clock, Mail, Compass } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -57,6 +57,12 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4 text-yellow-400">เครื่องมือ</h3>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/qibla" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                  <Compass className="w-4 h-4" />
+                  ทิศกิบละห์
+                </Link>
+              </li>
               <li>
                 <Link href="/calculator/zakat" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
                   <Calculator className="w-4 h-4" />

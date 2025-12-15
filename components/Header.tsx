@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Building2, Menu, X, ChevronDown, Calculator } from 'lucide-react';
+import { Building2, Menu, X, ChevronDown, Calculator, Compass } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +35,13 @@ export default function Header() {
               </button>
               
               <div className="absolute top-full left-0 mt-1 w-48 bg-slate-800 rounded-lg shadow-lg border border-slate-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link 
+                  href="/qibla" 
+                  className="flex items-center px-4 py-3 text-gray-200 hover:bg-slate-700 hover:text-yellow-400 transition-colors"
+                >
+                  <Compass className="w-4 h-4 mr-2" />
+                  ทิศกิบละห์
+                </Link>
                 <Link 
                   href="/calculator/zakat" 
                   className="flex items-center px-4 py-3 text-gray-200 hover:bg-slate-700 hover:text-yellow-400 transition-colors"
@@ -79,6 +86,14 @@ export default function Header() {
             </Link>
               
             <div className="space-y-2 pl-4">
+              <Link 
+                href="/qibla" 
+                className="flex items-center text-gray-200 hover:text-yellow-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Compass className="w-4 h-4 mr-2" />
+                ทิศกิบละห์
+              </Link>
               <Link 
                 href="/calculator/zakat" 
                 className="flex items-center text-gray-200 hover:text-yellow-400"
