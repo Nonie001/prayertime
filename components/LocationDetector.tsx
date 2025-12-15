@@ -153,12 +153,12 @@ export default function LocationPrayerCard({ fallbackData }: Props) {
   // กรณีกำลังโหลด
   if (isLoading) {
     return (
-      <section className="relative z-20 -mt-20 px-4">
+      <section className="relative z-20 -mt-16 sm:-mt-20 px-3 sm:px-4">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-slate-800 rounded-xl shadow-xl overflow-hidden p-8">
+          <div className="bg-slate-800 rounded-xl shadow-xl overflow-hidden p-6 sm:p-8">
             <div className="flex items-center justify-center gap-3 text-white">
-              <Loader2 className="w-6 h-6 animate-spin text-yellow-400" />
-              <span>กำลังค้นหาตำแหน่งของคุณ...</span>
+              <Loader2 className="w-5 h-5 sm:w-6 sm:h-6 animate-spin text-yellow-400" />
+              <span className="text-sm sm:text-base">กำลังค้นหาตำแหน่ง...</span>
             </div>
           </div>
         </div>
@@ -175,43 +175,48 @@ export default function LocationPrayerCard({ fallbackData }: Props) {
   if (!displayData) return null;
 
   const icons: Record<string, React.ReactNode> = {
-    fajr: <SunDim className="w-5 h-5 text-yellow-400" />,
-    dhuhr: <Sun className="w-5 h-5 text-yellow-400" />,
-    asr: <CloudSun className="w-5 h-5 text-yellow-400" />,
-    maghrib: <Sunset className="w-5 h-5 text-yellow-400" />,
-    isha: <Moon className="w-5 h-5 text-yellow-400" />,
+    fajr: <SunDim className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />,
+    dhuhr: <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />,
+    asr: <CloudSun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />,
+    maghrib: <Sunset className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />,
+    isha: <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />,
   };
 
   return (
-    <section className="relative z-20 -mt-20 px-4">
+    <section className="relative z-20 -mt-16 sm:-mt-20 px-3 sm:px-4">
       <div className="max-w-3xl mx-auto">
         <div className="bg-slate-800 rounded-xl shadow-xl overflow-hidden">
-          <div className="px-4 py-3 md:px-5 md:py-4 border-b border-slate-700 flex items-center justify-between">
-            <div>
+          {/* Header */}
+          <div className="px-3 py-2.5 sm:px-5 sm:py-4 border-b border-slate-700 flex items-center justify-between">
+            <div className="min-w-0 flex-1">
               <Link 
                 href={`/prayertime/${displayData.province.id}`}
-                className="text-base md:text-lg font-bold text-white flex items-center gap-2 hover:text-yellow-400 transition-colors"
+                className="text-sm sm:text-lg font-bold text-white flex items-center gap-1.5 sm:gap-2 hover:text-yellow-400 transition-colors"
               >
-                <MapPin className="w-4 h-4 text-yellow-400" />
-                {displayData.province.name}
-                {!usingFallback && <span className="text-xs text-green-400 font-normal">(ตำแหน่งของคุณ)</span>}
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-400 flex-shrink-0" />
+                <span className="truncate">{displayData.province.name}</span>
+                {!usingFallback && <span className="hidden sm:inline text-xs text-green-400 font-normal">(ตำแหน่งของคุณ)</span>}
               </Link>
-              <p className="text-slate-400 text-xs">{displayData.date}</p>
+              <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">{displayData.date}</p>
             </div>
-            <p className="text-yellow-400 font-medium text-xs md:text-sm">{displayData.hijriDate}</p>
+            <div className="text-right flex-shrink-0 ml-2">
+              <p className="text-yellow-400 font-medium text-[10px] sm:text-sm">{displayData.hijriDate}</p>
+              {!usingFallback && <span className="sm:hidden text-[9px] text-green-400">📍 ตำแหน่งของคุณ</span>}
+            </div>
           </div>
           
-          <div className="p-3 md:p-4">
-            <div className="grid grid-cols-5 gap-2">
+          {/* Prayer Times Grid */}
+          <div className="p-2.5 sm:p-4">
+            <div className="grid grid-cols-5 gap-1.5 sm:gap-3">
               {Object.entries(displayData.times)
                 .filter(([key]) => key !== 'sunrise')
                 .map(([key, time]) => (
-                  <div key={key} className="bg-slate-700/50 rounded-lg p-2 md:p-3 text-center">
-                    <div className="flex justify-center mb-1">
+                  <div key={key} className="bg-slate-700/50 rounded-lg p-1.5 sm:p-3 text-center">
+                    <div className="flex justify-center mb-0.5 sm:mb-1">
                       {icons[key]}
                     </div>
-                    <div className="text-lg md:text-xl font-bold text-yellow-400">{time}</div>
-                    <div className="text-white text-[10px] md:text-xs mt-0.5">
+                    <div className="text-sm sm:text-xl font-bold text-yellow-400 leading-tight">{time}</div>
+                    <div className="text-white text-[8px] sm:text-xs mt-0.5 leading-tight">
                       {PRAYER_NAMES[key as keyof typeof PRAYER_NAMES]}
                     </div>
                   </div>
