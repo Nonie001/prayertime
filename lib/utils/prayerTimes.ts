@@ -35,10 +35,9 @@ export async function getPrayerTimes(lat: number, lng: number, retries = 3): Pro
   
   for (let attempt = 0; attempt < retries; attempt++) {
     try {
-      // Add delay between retries to avoid rate limiting
-      if (attempt > 0) {
-        await delay(1000 * attempt);
-      }
+      // Add delay between retries and initial delay to avoid rate limiting
+      const delayMs = attempt === 0 ? Math.random() * 500 : 1000 * attempt;
+      await delay(delayMs);
 
       // method=3: Muslim World League (MWL) - เหมาะกับไทย
       // school=1: Shafi'i (มาตรฐานในไทย) - Asr เมื่อเงาเท่าตัว
