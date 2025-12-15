@@ -96,8 +96,13 @@ export default function RootLayout({
     <html lang="th">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="apple-touch-icon" href="/logo.svg" />
         <meta name="theme-color" content="#1e293b" />
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812903229696322"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${prompt.variable} font-sans antialiased`}
