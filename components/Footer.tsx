@@ -109,17 +109,25 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-sm text-slate-500">
             <p>© {currentYear} เวลาละหมาดไทย - สงวนลิขสิทธิ์</p>
-            <p>
-              ข้อมูลเวลาละหมาดจาก{' '}
-              <a 
-                href="https://aladhan.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                Aladhan API
-              </a>
-            </p>
+            <div className="flex items-center gap-4">
+              <Link href="/about" className="hover:text-white transition-colors">
+                เกี่ยวกับเรา
+              </Link>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                นโยบายความเป็นส่วนตัว
+              </Link>
+            </div>
+          </div>
+          <div className="text-center mt-2 text-xs text-slate-600">
+            ข้อมูลเวลาละหมาดจาก{' '}
+            <a 
+              href="https://aladhan.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors"
+            >
+              Aladhan API
+            </a>
           </div>
         </div>
       </div>
