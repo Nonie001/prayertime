@@ -110,37 +110,49 @@ export default function LocationPrayerCard({ fallbackData }: Props) {
   const [usingFallback, setUsingFallback] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+    
     // ตรวจจับตำแหน่งอัตโนมัติเมื่อ component mount
     if (!navigator.geolocation) {
-      setUsingFallback(true);
-      setIsLoading(false);
+      // ใช้ setTimeout เพื่อหลีกเลี่ยง cascading renders
+      setTimeout(() => {
+        if (isMounted) {
+          setUsingFallback(true);
+          setIsLoading(false);
+        }
+      }, 0);
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
       async (position) => {
+        if (!isMounted) return;
         try {
           const { latitude, longitude } = position.coords;
           const nearestProvince = findNearestProvince(latitude, longitude);
           
           if (nearestProvince) {
             const times = await fetchPrayerTimes(nearestProvince.lat, nearestProvince.lng);
-            setPrayerData({
-              ...times,
-              province: nearestProvince
-            });
+            if (isMounted) {
+              setPrayerData({
+                ...times,
+                province: nearestProvince
+              });
+            }
           } else {
-            setUsingFallback(true);
+            if (isMounted) setUsingFallback(true);
           }
         } catch {
-          setUsingFallback(true);
+          if (isMounted) setUsingFallback(true);
         }
-        setIsLoading(false);
+        if (isMounted) setIsLoading(false);
       },
       () => {
         // ถ้าไม่อนุญาตหรือ error ใช้ fallback (กรุงเทพ)
-        setUsingFallback(true);
-        setIsLoading(false);
+        if (isMounted) {
+          setUsingFallback(true);
+          setIsLoading(false);
+        }
       },
       {
         enableHighAccuracy: false,
@@ -148,6 +160,10 @@ export default function LocationPrayerCard({ fallbackData }: Props) {
         maximumAge: 600000 // cache 10 นาที
       }
     );
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   // กรณีกำลังโหลด

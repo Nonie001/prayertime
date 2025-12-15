@@ -70,7 +70,7 @@ export default function QiblaPage() {
                     หมุนโทรศัพท์เป็นรูป <strong className="text-emerald-600">∞ (อินฟินิตี้)</strong> ช้าๆ 2-3 รอบ เพื่อปรับเทียบเซ็นเซอร์เข็มทิศ
                   </p>
                   <p className="text-slate-500 text-xs mt-1">
-                    หากยังไม่แม่นยำ ให้กดปุ่ม "รีเฟรช" ด้านล่าง
+                    หากยังไม่แม่นยำ ให้กดปุ่ม &ldquo;รีเฟรช&rdquo; ด้านล่าง
                   </p>
                 </div>
               </div>

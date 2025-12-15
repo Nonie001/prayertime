@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import provinces from '@/data/provinces.json';
 import { getPrayerTimes, PRAYER_NAMES } from '@/lib/utils/prayerTimes';
-import { MapPin, ArrowLeft, Clock, Sun, Sunset, Moon, CloudSun, SunDim, Sunrise } from 'lucide-react';
+import { MapPin, Clock, Sun, Sunset, Moon, CloudSun, SunDim, Sunrise } from 'lucide-react';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 

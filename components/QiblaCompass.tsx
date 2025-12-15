@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Navigation, MapPin, Loader2, AlertCircle, Compass, RotateCcw } from 'lucide-react';
-import { calculateQiblaDirection, calculateDistanceToMakkah, getDirectionName, KAABA_INFO } from '@/lib/utils/qibla';
+import { Navigation, MapPin, Loader2, AlertCircle, RotateCcw } from 'lucide-react';
+import { calculateQiblaDirection, calculateDistanceToMakkah, getDirectionName } from '@/lib/utils/qibla';
 
 interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
   requestPermission?: () => Promise<'granted' | 'denied' | 'default'>;
@@ -16,7 +16,6 @@ export default function QiblaCompass() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [permissionGranted, setPermissionGranted] = useState(false);
-  const [isCompassSupported, setIsCompassSupported] = useState(true);
 
   // คำนวณมุมที่ต้องหมุน compass needle
   const needleRotation = useCallback(() => {
@@ -88,11 +87,9 @@ export default function QiblaCompass() {
           setPermissionGranted(true);
           return true;
         } else {
-          setIsCompassSupported(false);
           return false;
         }
       } catch {
-        setIsCompassSupported(false);
         return false;
       }
     }
