@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import provinces from '@/data/provinces.json';
 import { Search, MapPin, Star, ArrowLeft, Globe } from 'lucide-react';
+import Footer from '@/components/Footer';
 
 const REGIONS = {
   central: { name: 'ภาคกลาง', color: 'bg-blue-100 text-blue-700', badge: 'bg-blue-500' },
@@ -199,17 +200,7 @@ export default function PrayerTimePage() {
         )}
       </div>
 
-      {/* Footer */}
-      <footer className="bg-slate-800 text-white py-8 mt-12">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="font-bold">เวลาละหมาดไทย</span>
-          </div>
-          <p className="text-slate-400 text-sm">
-            © {new Date().getFullYear()} สงวนลิขสิทธิ์
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

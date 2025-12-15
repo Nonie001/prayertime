@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Calculator, DollarSign, Coins, ArrowLeft } from 'lucide-react';
+import Footer from '@/components/Footer';
 
 // Format number with commas
 const formatNumber = (value: string) => {
@@ -161,17 +162,7 @@ export default function ZakatCalculator() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-8 mt-12">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="font-bold">เวลาละหมาดไทย</span>
-          </div>
-          <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} สงวนลิขสิทธิ์
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

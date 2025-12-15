@@ -4,6 +4,7 @@ import provinces from '@/data/provinces.json';
 import { getPrayerTimes } from '@/lib/utils/prayerTimes';
 import { Calculator, Scroll, MapPin, ArrowRight } from 'lucide-react';
 import LocationPrayerCard from '@/components/LocationDetector';
+import Footer from '@/components/Footer';
 
 export const revalidate = 86400;
 
@@ -156,17 +157,7 @@ export default async function Home() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="font-bold">เวลาละหมาดไทย</span>
-          </div>
-          <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} สงวนลิขสิทธิ์
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
     </>
   );
