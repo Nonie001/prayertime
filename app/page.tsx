@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import provinces from '@/data/provinces.json';
 import { getPrayerTimes, PRAYER_NAMES } from '@/lib/utils/prayerTimes';
-import { Calculator, Scroll, Clock, MapPin, ArrowRight, Star } from 'lucide-react';
+import { Calculator, Scroll, Clock, MapPin, ArrowRight, Star, Sun, Sunset, Moon, CloudSun, SunDim } from 'lucide-react';
 
 export const revalidate = 86400;
 
@@ -95,14 +95,26 @@ export default async function Home() {
                 <div className="grid grid-cols-5 gap-2">
                   {Object.entries(bangkokPrayerData.times)
                     .filter(([key]) => key !== 'sunrise')
-                    .map(([key, time]) => (
-                      <div key={key} className="bg-slate-700/50 rounded-lg p-2 md:p-3 text-center">
-                        <div className="text-lg md:text-xl font-bold text-yellow-400">{time}</div>
-                        <div className="text-white text-[10px] md:text-xs mt-0.5">
-                          {PRAYER_NAMES[key as keyof typeof PRAYER_NAMES]}
+                    .map(([key, time]) => {
+                      const icons: Record<string, React.ReactNode> = {
+                        fajr: <SunDim className="w-5 h-5 text-yellow-400" />,
+                        dhuhr: <Sun className="w-5 h-5 text-yellow-400" />,
+                        asr: <CloudSun className="w-5 h-5 text-yellow-400" />,
+                        maghrib: <Sunset className="w-5 h-5 text-yellow-400" />,
+                        isha: <Moon className="w-5 h-5 text-yellow-400" />,
+                      };
+                      return (
+                        <div key={key} className="bg-slate-700/50 rounded-lg p-2 md:p-3 text-center">
+                          <div className="flex justify-center mb-1">
+                            {icons[key]}
+                          </div>
+                          <div className="text-lg md:text-xl font-bold text-yellow-400">{time}</div>
+                          <div className="text-white text-[10px] md:text-xs mt-0.5">
+                            {PRAYER_NAMES[key as keyof typeof PRAYER_NAMES]}
+                          </div>
                         </div>
-                      </div>
-                  ))}
+                      );
+                    })}
                 </div>
               </div>
             </div>
