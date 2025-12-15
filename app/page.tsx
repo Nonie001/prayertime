@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import provinces from '@/data/provinces.json';
-import { getPrayerTimes, PRAYER_NAMES } from '@/lib/utils/prayerTimes';
-import { Calculator, Scroll, MapPin, ArrowRight, Sun, Sunset, Moon, CloudSun, SunDim } from 'lucide-react';
+import { getPrayerTimes } from '@/lib/utils/prayerTimes';
+import { Calculator, Scroll, MapPin, ArrowRight } from 'lucide-react';
+import LocationPrayerCard from '@/components/LocationDetector';
 
 export const revalidate = 86400;
 
@@ -83,52 +84,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Prayer Times Card */}
-      {bangkokPrayerData && (
-        <section className="relative z-20 -mt-20 px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-slate-800 rounded-xl shadow-xl overflow-hidden">
-              <div className="px-4 py-3 md:px-5 md:py-4 border-b border-slate-700 flex items-center justify-between">
-                <div>
-                  <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-yellow-400" />
-                    กรุงเทพมหานคร
-                  </h2>
-                  <p className="text-slate-400 text-xs">{bangkokPrayerData.date}</p>
-                </div>
-                <p className="text-yellow-400 font-medium text-xs md:text-sm">{bangkokPrayerData.hijriDate}</p>
-              </div>
-              
-              <div className="p-3 md:p-4">
-                <div className="grid grid-cols-5 gap-2">
-                  {Object.entries(bangkokPrayerData.times)
-                    .filter(([key]) => key !== 'sunrise')
-                    .map(([key, time]) => {
-                      const icons: Record<string, React.ReactNode> = {
-                        fajr: <SunDim className="w-5 h-5 text-yellow-400" />,
-                        dhuhr: <Sun className="w-5 h-5 text-yellow-400" />,
-                        asr: <CloudSun className="w-5 h-5 text-yellow-400" />,
-                        maghrib: <Sunset className="w-5 h-5 text-yellow-400" />,
-                        isha: <Moon className="w-5 h-5 text-yellow-400" />,
-                      };
-                      return (
-                        <div key={key} className="bg-slate-700/50 rounded-lg p-2 md:p-3 text-center">
-                          <div className="flex justify-center mb-1">
-                            {icons[key]}
-                          </div>
-                          <div className="text-lg md:text-xl font-bold text-yellow-400">{time}</div>
-                          <div className="text-white text-[10px] md:text-xs mt-0.5">
-                            {PRAYER_NAMES[key as keyof typeof PRAYER_NAMES]}
-                          </div>
-                        </div>
-                      );
-                    })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Prayer Times Card - ตรวจจับตำแหน่งอัตโนมัติ */}
+      <LocationPrayerCard fallbackData={bangkokPrayerData} />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12 md:py-16">
