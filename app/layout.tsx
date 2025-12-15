@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
+import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 const prompt = Prompt({
@@ -103,6 +104,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <CookieConsent />
         <Analytics />
       </body>
     </html>

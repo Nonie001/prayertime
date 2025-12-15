@@ -156,15 +156,6 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-
-        {/* Developer Note */}
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
-          <p className="text-emerald-800 text-center">
-            🤲 พัฒนาด้วยความตั้งใจเพื่อเป็นสะดะเกาะฮ์ญาริยะห์ <br/>
-            <span className="text-sm text-emerald-600">ขอให้อัลลอฮ์ทรงตอบรับ อามีน</span>
-          </p>
-        </div>
-
       </div>
 
       <Footer />
