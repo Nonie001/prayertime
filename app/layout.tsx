@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -95,6 +96,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   );
