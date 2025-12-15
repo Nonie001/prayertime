@@ -139,9 +139,9 @@ export default function QiblaCompass() {
   // Loading state
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] text-gray-500">
-        <Loader2 className="w-12 h-12 animate-spin text-emerald-500 mb-4" />
-        <p className="text-lg">กำลังค้นหาตำแหน่งของคุณ...</p>
+      <div className="flex flex-col items-center justify-center min-h-[350px] text-slate-500">
+        <Loader2 className="w-10 h-10 animate-spin text-emerald-500 mb-4" />
+        <p>กำลังค้นหาตำแหน่ง...</p>
       </div>
     );
   }
@@ -149,14 +149,14 @@ export default function QiblaCompass() {
   // Error state
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] text-center">
-        <AlertCircle className="w-16 h-16 text-red-500 mb-4" />
-        <p className="text-red-500 text-lg mb-4">{error}</p>
+      <div className="flex flex-col items-center justify-center min-h-[350px] text-center">
+        <AlertCircle className="w-12 h-12 text-red-500 mb-4" />
+        <p className="text-red-500 mb-4">{error}</p>
         <button
           onClick={requestLocation}
-          className="flex items-center gap-2 px-6 py-3 bg-emerald-500 text-white rounded-xl font-semibold hover:bg-emerald-600 transition-colors"
+          className="flex items-center gap-2 px-5 py-2.5 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors"
         >
-          <RotateCcw className="w-5 h-5" />
+          <RotateCcw className="w-4 h-4" />
           ลองใหม่
         </button>
       </div>
@@ -166,9 +166,9 @@ export default function QiblaCompass() {
   return (
     <div className="flex flex-col items-center">
       {/* Compass */}
-      <div className="relative w-72 h-72 sm:w-80 sm:h-80 mb-8">
+      <div className="relative w-64 h-64 sm:w-72 sm:h-72 mb-6">
         {/* Compass Background */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-100 to-white border-4 border-gray-200 shadow-2xl">
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border-4 border-slate-600 shadow-xl">
           {/* Compass Ring */}
           <svg className="w-full h-full" viewBox="0 0 200 200">
             {/* Degree marks */}
@@ -180,10 +180,10 @@ export default function QiblaCompass() {
                 <line
                   key={i}
                   x1="100"
-                  y1={isCardinal ? "12" : isMajor ? "15" : "18"}
+                  y1={isCardinal ? "14" : isMajor ? "17" : "20"}
                   x2="100"
-                  y2="22"
-                  stroke={isCardinal ? "#10b981" : isMajor ? "#6b7280" : "#d1d5db"}
+                  y2="24"
+                  stroke={isCardinal ? "#10b981" : isMajor ? "#64748b" : "#475569"}
                   strokeWidth={isCardinal ? "2" : "1"}
                   transform={`rotate(${rotation} 100 100)`}
                 />
@@ -191,10 +191,10 @@ export default function QiblaCompass() {
             })}
             
             {/* Cardinal directions */}
-            <text x="100" y="38" textAnchor="middle" className="fill-emerald-600 text-xs font-bold">N</text>
-            <text x="168" y="104" textAnchor="middle" className="fill-gray-500 text-xs font-bold">E</text>
-            <text x="100" y="170" textAnchor="middle" className="fill-gray-500 text-xs font-bold">S</text>
-            <text x="32" y="104" textAnchor="middle" className="fill-gray-500 text-xs font-bold">W</text>
+            <text x="100" y="40" textAnchor="middle" className="fill-emerald-400 text-xs font-bold">N</text>
+            <text x="166" y="104" textAnchor="middle" className="fill-slate-400 text-xs font-bold">E</text>
+            <text x="100" y="168" textAnchor="middle" className="fill-slate-400 text-xs font-bold">S</text>
+            <text x="34" y="104" textAnchor="middle" className="fill-slate-400 text-xs font-bold">W</text>
           </svg>
         </div>
 
@@ -206,94 +206,61 @@ export default function QiblaCompass() {
           <svg className="w-full h-full" viewBox="0 0 200 200">
             {/* Needle */}
             <path
-              d="M100 25 L108 100 L100 115 L92 100 Z"
+              d="M100 28 L107 100 L100 112 L93 100 Z"
               className="fill-emerald-500"
-              filter="drop-shadow(0 2px 4px rgba(0,0,0,0.2))"
+              filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
             />
             {/* Ka'bah icon at tip */}
             <rect
-              x="94"
-              y="18"
-              width="12"
-              height="12"
+              x="95"
+              y="20"
+              width="10"
+              height="10"
               rx="1"
-              className="fill-amber-500"
+              className="fill-amber-400"
             />
             {/* Center dot */}
-            <circle cx="100" cy="100" r="8" className="fill-white stroke-gray-300" strokeWidth="2" />
-            <circle cx="100" cy="100" r="4" className="fill-emerald-500" />
+            <circle cx="100" cy="100" r="6" className="fill-slate-900 stroke-slate-600" strokeWidth="2" />
+            <circle cx="100" cy="100" r="3" className="fill-emerald-400" />
           </svg>
         </div>
-
-        {/* Compass status indicator */}
-        {!isCompassSupported && (
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-100 px-3 py-1 rounded-full text-xs text-gray-500 flex items-center gap-1 border border-gray-200">
-            <Compass className="w-3 h-3" />
-            <span>หันอุปกรณ์ไปทางทิศเหนือ</span>
-          </div>
-        )}
       </div>
 
-      {/* Qibla Info */}
-      <div className="w-full max-w-md space-y-4">
-        {/* Direction Card */}
-        <div className="bg-emerald-50 rounded-2xl p-6 text-center border border-emerald-100">
-          <div className="flex items-center justify-center gap-2 text-emerald-600 mb-2">
-            <Navigation className="w-5 h-5" />
-            <span className="text-sm font-medium">ทิศกิบละห์</span>
+      {/* Qibla Info - Compact Grid */}
+      <div className="w-full grid grid-cols-2 gap-3 mb-4">
+        {/* Direction */}
+        <div className="bg-slate-800 rounded-xl p-4 text-center">
+          <div className="flex items-center justify-center gap-1.5 text-emerald-400 mb-1">
+            <Navigation className="w-4 h-4" />
+            <span className="text-xs font-medium">ทิศกิบละห์</span>
           </div>
-          <div className="text-4xl font-bold text-gray-800 mb-1">
+          <div className="text-2xl font-bold text-white">
             {qiblaDirection?.toFixed(1)}°
           </div>
-          <div className="text-gray-500">
+          <div className="text-slate-400 text-xs">
             {qiblaDirection !== null && getDirectionName(qiblaDirection)}
           </div>
         </div>
 
-        {/* Distance Card */}
-        <div className="bg-amber-50 rounded-2xl p-6 text-center border border-amber-100">
-          <div className="flex items-center justify-center gap-2 text-amber-600 mb-2">
-            <MapPin className="w-5 h-5" />
-            <span className="text-sm font-medium">ระยะทางถึงมักกะห์</span>
+        {/* Distance */}
+        <div className="bg-slate-800 rounded-xl p-4 text-center">
+          <div className="flex items-center justify-center gap-1.5 text-amber-400 mb-1">
+            <MapPin className="w-4 h-4" />
+            <span className="text-xs font-medium">ระยะทาง</span>
           </div>
-          <div className="text-3xl font-bold text-gray-800 mb-1">
-            {distance?.toLocaleString('th-TH', { maximumFractionDigits: 0 })} กม.
+          <div className="text-2xl font-bold text-white">
+            {distance?.toLocaleString('th-TH', { maximumFractionDigits: 0 })}
           </div>
-          <div className="text-gray-500 text-sm">
-            {KAABA_INFO.nameArabic} - {KAABA_INFO.city}, {KAABA_INFO.country}
-          </div>
+          <div className="text-slate-400 text-xs">กิโลเมตร</div>
         </div>
-
-        {/* User Location */}
-        {userLocation && (
-          <div className="bg-gray-50 rounded-xl p-4 text-center text-sm border border-gray-200">
-            <div className="text-gray-500 mb-1">ตำแหน่งของคุณ</div>
-            <div className="text-gray-700 font-mono">
-              {userLocation.lat.toFixed(6)}°, {userLocation.lng.toFixed(6)}°
-            </div>
-          </div>
-        )}
-
-        {/* Compass heading (when available) */}
-        {compassHeading !== null && (
-          <div className="text-center text-sm text-gray-500">
-            <Compass className="w-4 h-4 inline mr-1" />
-            ทิศหัวอุปกรณ์: {compassHeading.toFixed(0)}°
-          </div>
-        )}
       </div>
 
-      {/* Instructions */}
-      <div className="mt-8 max-w-md text-center text-gray-500 text-sm">
-        <p className="mb-2">
-          <span className="text-emerald-600">💡 วิธีใช้:</span> หมุนตัวเองให้เข็มสีเขียวชี้ตรงกับตัวคุณ
-        </p>
-        {!isCompassSupported && (
-          <p className="text-xs text-gray-400">
-            * อุปกรณ์ของคุณไม่รองรับ compass ดิจิทัล กรุณาใช้ compass จริงเพื่อหาทิศเหนือก่อน
-          </p>
-        )}
-      </div>
+      {/* User Location */}
+      {userLocation && (
+        <div className="text-center text-xs text-slate-500">
+          ตำแหน่ง: {userLocation.lat.toFixed(4)}°, {userLocation.lng.toFixed(4)}°
+        </div>
+      )}
     </div>
   );
 }
