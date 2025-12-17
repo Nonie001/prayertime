@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // google: "your-google-verification-code",
+    // ยืนยันผ่าน DNS แล้ว
   },
   alternates: {
     canonical: "https://prayertime.in.th/",
