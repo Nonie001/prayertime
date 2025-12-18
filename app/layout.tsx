@@ -20,10 +20,12 @@ export const metadata: Metadata = {
   description: "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย พร้อมเครื่องมือคำนวณซะกาตและมรดกตามหลักอิสลาม อัพเดททุกวัน",
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/logo.svg', type: 'image/svg+xml', sizes: 'any' },
+      { url: '/logo.svg', sizes: '16x16' },
+      { url: '/logo.svg', sizes: '32x32' },
     ],
     apple: '/logo.svg',
+    shortcut: '/logo.svg',
   },
   keywords: [
     "เวลาละหมาด",
@@ -97,7 +99,61 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/logo.svg" />
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <meta name="theme-color" content="#1e293b" />
+        
+        {/* Organization Schema for Google */}
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "เวลาละหมาดไทย",
+              "url": "https://prayertime.in.th",
+              "logo": "https://prayertime.in.th/logo.svg",
+              "description": "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย พร้อมเครื่องมือคำนวณซะกาตและมรดกตามหลักอิสลาม",
+              "sameAs": [
+                "https://prayertime.in.th"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "availableLanguage": ["Thai", "English"]
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Thailand"
+              },
+              "serviceType": "Religious Information Services"
+            })
+          }}
+        />
+        
+        {/* Website Schema for Google */}
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "เวลาละหมาดไทย",
+              "url": "https://prayertime.in.th",
+              "description": "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย",
+              "publisher": {
+                "@type": "Organization",
+                "name": "เวลาละหมาดไทย",
+                "logo": "https://prayertime.in.th/logo.svg"
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://prayertime.in.th/prayertime/{search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        
         <script 
           async 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812903229696322"
