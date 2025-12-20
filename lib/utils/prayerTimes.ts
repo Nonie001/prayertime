@@ -35,8 +35,12 @@ export async function getPrayerTimes(lat: number, lng: number, retries = 3): Pro
   
   for (let attempt = 0; attempt < retries; attempt++) {
     try {
-      // Add delay between retries and initial delay to avoid rate limiting
-      const delayMs = attempt === 0 ? Math.random() * 500 : 1000 * attempt;
+      // Add delay between retries with exponential backoff
+      // First attempt: random 200-800ms, subsequent: exponential backoff
+      const delayMs = attempt === 0 
+        ? Math.random() * 600 + 200  // 200-800ms random delay
+        : Math.min(2000 * Math.pow(2, attempt - 1), 10000); // exponential: 2s, 4s, 8s (max 10s)
+      
       await delay(delayMs);
 
       // method=3: Muslim World League (MWL) - เหมาะกับไทย
@@ -46,7 +50,7 @@ export async function getPrayerTimes(lat: number, lng: number, retries = 3): Pro
         `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=${lat}&longitude=${lng}&method=3&school=1&timezonestring=Asia/Bangkok`,
         { 
           next: { revalidate: 86400 },
-          signal: AbortSignal.timeout(10000) // 10 second timeout
+          signal: AbortSignal.timeout(15000) // 15 second timeout
         }
       );
       
