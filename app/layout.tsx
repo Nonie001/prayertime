@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   description: "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย พร้อมเครื่องมือคำนวณซะกาตและมรดกตามหลักอิสลาม อัพเดททุกวัน",
   icons: {
     icon: [
-      { url: '/logo.svg', type: 'image/svg+xml', sizes: 'any' },
-      { url: '/logo.svg', sizes: '16x16' },
-      { url: '/logo.svg', sizes: '32x32' },
+      { url: '/logo.png', type: 'image/png', sizes: '32x32' },
+      { url: '/logo.png', type: 'image/png', sizes: '16x16' },
+      { url: '/logo.svg', type: 'image/svg+xml' },
     ],
-    apple: '/logo.svg',
-    shortcut: '/logo.svg',
+    apple: '/logo.png',
+    shortcut: '/logo.png',
   },
   keywords: [
     "เวลาละหมาด",
