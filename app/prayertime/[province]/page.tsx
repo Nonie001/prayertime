@@ -152,10 +152,24 @@ export default async function ProvincePageDetail({ params }: PageProps) {
     mainEntity: Object.entries(prayerData.times).map(([key, time]) => ({
       '@type': 'Event',
       name: PRAYER_NAMES[key as keyof typeof PRAYER_NAMES],
+      description: `เวลา${PRAYER_NAMES[key as keyof typeof PRAYER_NAMES]}ที่${provinceData.name}`,
       startDate: `${new Date().toISOString().split('T')[0]}T${time}:00+07:00`,
+      endDate: `${new Date().toISOString().split('T')[0]}T${time}:00+07:00`,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
       location: {
         '@type': 'Place',
         name: provinceData.name,
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: provinceData.name,
+          addressCountry: 'TH',
+        },
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: 'เวลาละหมาดไทย',
+        url: 'https://prayertime.in.th',
       },
     })),
   };
