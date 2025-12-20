@@ -22,12 +22,14 @@ const jsonLd = {
   },
 };
 
-// จังหวัดที่มีประชากรมุสลิมมาก (20 จังหวัด)
+// จังหวัดที่มีประชากรมุสลิมมากและจังหวัดสำคัญ
 const POPULAR_PROVINCE_IDS = [
   'pattani', 'yala', 'narathiwat', 'satun', 'songkhla',
   'krabi', 'trang', 'phang-nga', 'phuket', 'nakhon-si-thammarat',
   'surat-thani', 'chumphon', 'ranong', 'phatthalung', 'bangkok',
-  'nonthaburi', 'pathum-thani', 'samut-prakan', 'phra-nakhon-si-ayutthaya', 'chon-buri'
+  'nonthaburi', 'pathum-thani', 'samut-prakan', 'phra-nakhon-si-ayutthaya', 'chon-buri',
+  'chiang-mai', 'chiang-rai', 'khon-kaen', 'udon-thani', 'nakhon-ratchasima',
+  'ubon-ratchathani', 'rayong', 'samut-sakhon', 'nakhon-pathom', 'ratchaburi'
 ];
 
 export default async function Home() {

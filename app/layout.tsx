@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
@@ -18,15 +19,7 @@ export const metadata: Metadata = {
     template: "%s | เวลาละหมาดไทย",
   },
   description: "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย พร้อมเครื่องมือคำนวณซะกาตและมรดกตามหลักอิสลาม อัพเดททุกวัน",
-  icons: {
-    icon: [
-      { url: '/logo.png', type: 'image/png', sizes: '32x32' },
-      { url: '/logo.png', type: 'image/png', sizes: '16x16' },
-      { url: '/logo.svg', type: 'image/svg+xml' },
-    ],
-    apple: '/logo.png',
-    shortcut: '/logo.png',
-  },
+  manifest: "/manifest.json",
   keywords: [
     "เวลาละหมาด",
     "เวลาละหมาดวันนี้",
@@ -133,14 +126,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th">
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/logo.svg" />
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-        <meta name="theme-color" content="#1e293b" />
-        
+      <body
+        className={`${prompt.variable} font-sans antialiased`}
+      >
         {/* Organization Schema for Google */}
-        <script 
+        <Script
+          id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -168,7 +159,8 @@ export default function RootLayout({
         />
         
         {/* Website Schema for Google */}
-        <script 
+        <Script
+          id="website-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -191,15 +183,12 @@ export default function RootLayout({
           }}
         />
         
-        <script 
-          async 
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812903229696322"
           crossOrigin="anonymous"
         />
-      </head>
-      <body
-        className={`${prompt.variable} font-sans antialiased`}
-      >
+        
         <Header />
         {children}
         <CookieConsent />
