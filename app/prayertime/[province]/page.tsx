@@ -79,7 +79,7 @@ export default async function ProvincePageDetail({ params }: PageProps) {
   try {
     prayerData = await getPrayerTimes(provinceData.lat, provinceData.lng);
   } catch (error) {
-    console.error('Error fetching prayer times:', error);
+    // Fallback error page
     return (
       <div className="min-h-screen bg-slate-50 pt-24 px-4">
         <div className="max-w-2xl mx-auto text-center">

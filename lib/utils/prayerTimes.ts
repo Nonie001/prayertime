@@ -73,11 +73,12 @@ export async function getPrayerTimes(lat: number, lng: number, retries = 3): Pro
         }
       };
     } catch (error) {
-      console.error(`Attempt ${attempt + 1} failed:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Attempt ${attempt + 1} failed:`, error);
+      }
       
       // On last retry, return fallback data
       if (attempt === retries - 1) {
-        console.log('Using fallback prayer times');
         const thaiMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
         return {
           date: `${day} ${thaiMonths[month - 1]} ${year + 543}`,

@@ -43,7 +43,7 @@ export default async function Home() {
     try {
       bangkokPrayerData = await getPrayerTimes(bangkokProvince.lat, bangkokProvince.lng);
     } catch (error) {
-      console.error('Error fetching Bangkok prayer times:', error);
+      // Fallback data will be used from getPrayerTimes
     }
   }
 
@@ -62,6 +62,7 @@ export default async function Home() {
             alt="มัสยิด" 
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-bottom" 
           />

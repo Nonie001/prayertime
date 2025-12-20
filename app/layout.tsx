@@ -183,9 +183,9 @@ export default function RootLayout({
           }}
         />
         
-        <script
-          async
+        <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812903229696322"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
         
