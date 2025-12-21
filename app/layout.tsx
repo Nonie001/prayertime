@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   },
   description: "เวลาละหมาดแม่นยำสำหรับทุกจังหวัดในประเทศไทย พร้อมเครื่องมือคำนวณซะกาตและมรดกตามหลักอิสลาม อัพเดททุกวัน",
   manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/logo.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/logo.png',
+    apple: { url: '/logo.png', sizes: '180x180', type: 'image/png' },
+  },
   keywords: [
     "เวลาละหมาด",
     "เวลาละหมาดวันนี้",

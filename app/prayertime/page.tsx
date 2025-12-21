@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useMemo } from 'react';
 import provinces from '@/data/provinces.json';
 import { Search, MapPin, Star, ArrowLeft, Globe } from 'lucide-react';
@@ -61,13 +62,19 @@ export default function PrayerTimePage() {
           
           <div className="flex items-center gap-3 mb-2">
             <div className="w-12 h-12 rounded-xl bg-yellow-400/20 flex items-center justify-center">
-              <Globe className="w-6 h-6 text-yellow-400" />
+              <Image 
+                src="/logo.svg" 
+                alt="เวลาละหมาดไทย" 
+                width={28} 
+                height={28}
+                className="w-7 h-7"
+              />
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-white">
                 เวลาละหมาด<span className="text-yellow-400">ทุกจังหวัด</span>
               </h1>
-              <p className="text-slate-300 text-sm">เลือกจังหวัดเพื่อดูเวลาละหมาด</p>
+              <p className="text-slate-300 text-sm">เลือกจังหวัดเพื่อดูเวลาละหมาดวันนี้ ครอบคลุม 77 จังหวัดในประเทศไทย แม่นยำมาก ต้นทางมาตรฐาน</p>
             </div>
           </div>
         </div>
